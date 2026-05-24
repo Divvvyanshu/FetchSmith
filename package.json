@@ -1,0 +1,65 @@
+{
+  "name": "fetchsmith",
+  "version": "0.1.0",
+  "description": "Zero-dependency, TypeScript-first HTTP client builder with middleware, retry, and type-safe responses",
+  "keywords": [
+    "fetch",
+    "http",
+    "client",
+    "typescript",
+    "type-safe",
+    "middleware",
+    "retry",
+    "zero-dependency"
+  ],
+  "author": "Your Name <you@example.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/yourusername/fetchsmith#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourusername/fetchsmith.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/fetchsmith/issues"
+  },
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --format esm,cjs --dts --clean",
+    "dev": "tsup src/index.ts --format esm,cjs --dts --watch",
+    "test": "node --import tsx/esm --test tests/*.test.ts",
+    "lint": "eslint src tests",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run typecheck && npm run build",
+    "size": "bundlephobia fetchsmith"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "tsup": "^8.0.0",
+    "tsx": "^4.0.0",
+    "typescript": "^5.4.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "sideEffects": false
+}
